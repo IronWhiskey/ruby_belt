@@ -1,0 +1,67 @@
+<h1>Welcome</h1>
+
+<% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+        <p><%=error%></p>
+    <% end %>
+<% end %>
+
+
+<div>
+    <form action = "/users/create" method = "post">
+        <input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+        <h3>Register</h3>
+        
+        <table>
+            <tr>
+                <td> <label>Name:</label> </td>
+                <td><input type = "text" name="name" id = "name"></td>
+            </tr>
+                
+            <tr>
+                <td><label>Alias:</label></td>
+                <td><input type = "text" name="alias" id = "alias"></td>
+            </tr>
+
+            <tr>
+                <td><label>Email:</label></td>
+                <td><input type="text" name="email" id = "email"></td>
+            </tr>
+
+            <tr>
+                <td><label>Password:</label></td>
+                <td><input type="password" name="password" id = "password"></td>
+            </tr>
+
+            <tr><p>Password should be at least 8 characters</p></tr>
+
+            <tr>    
+                <td><label>Confirm Password:</label></td>
+                <td><input type="password" name="password_confirmation" id = "password_confirmation"></td>
+            </tr>
+
+        </table>
+        <input type = "submit" value = "Register">
+    </form>
+
+
+    <form action = "sessions/create" method = "post">
+        <input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+        <h3>Login</h3>        
+    
+        <table>
+            <tr>
+                <td><label>Email:</label></td>
+                <td><input type="text" name="email" id = "email"></td>
+            </tr>
+
+            <tr>
+                <td><label>Password:</label></td>
+                <td><input type="password" name="password" id = "password"></td>
+            </tr>
+        </table>
+    
+        <input type = "submit" value = "Log In">
+    </form>
+
+</div>

@@ -1,0 +1,24 @@
+<p><a href="/bright_ideas">Bright Ideas</a> <a href="/sessions/destroy" data-method='delete'>Logout</a></p>
+
+
+<label> <a href="/users/:id"><%=@post.user%></a> says:</label>
+<p><%=post.idea%></p>
+
+
+<p>People who liked this post</p>
+
+
+<% if @post.users.length > 0 %>
+    <table>
+        <tr>
+            <th>Alias</th>
+            <th>Name</th>
+        </tr>
+    <%  @posts.users.each do |user| %>
+        <tr>
+            <td> <a href="users/<%=user.id%>">user.alias</a> </td>
+            <td>user.name</td>
+        </tr>
+    <% end %>
+    </table>
+<% end %>
