@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   
   validates :name, :alias, presence: true
   validates :email, presence: true,  uniqueness: {case_sensitive: false}, format: { with: EMAIL_REGEX }
-    
+  validates :password, length: { minimum: 8 }
   before_create do |user|
     user.email = user.email.downcase
   end
