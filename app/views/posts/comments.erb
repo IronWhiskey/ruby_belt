@@ -24,6 +24,13 @@
             <div class='row'>
                 <label> <a href="/users/<%=post.user.id%>"><%=post.user.alias%></a> says:</label>
                 <p id='user_comment'><%=post.idea%></p>
+                <% if post.user.id == session[:id] %>
+                    <form action="/posts/delete/<%=post.id%>" method="post">
+                        <input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+                        <input type="hidden" name="_method" value="delete">    
+                        <input type="submit" value="delete post">                        
+                    </form>
+                <% end %>
             </div>
         
             <div class='row'>

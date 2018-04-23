@@ -27,4 +27,10 @@ class PostsController < ApplicationController
         redirect_to :back
     end
 
+    def delete
+        p = Post.find( params[:post_id] )
+        p.delete
+        redirect_to :back
+    end
+
 end
