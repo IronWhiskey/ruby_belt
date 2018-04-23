@@ -1,32 +1,37 @@
-<div>
-    <a href="/sessions/destroy" data-method='delete'>Logout</a>
-</div>
-    
-<h1>Hi <%=@user.alias%></h1>
+<%= stylesheet_link_tag "comments.css" %>
 
 
-<form action = "/posts/create" method = "post">
-    <input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
-    <input type = 'hidden' name='user_id' value='<%=session[:id]%>'>
-    <input type="text" name="idea" id = "comment" value="Post something witty here...">
-    <input type = "submit" value = "Idea!">
-</form>
+<div id='wrapper'>
 
-
-
-<% if @allPosts.length > 0 %>
-
-    <%  @allPosts.each do |post| %>
-    
-    <div>
-        <label> <a href="/users/<%=post.user.id%>"><%=post.user.alias%></a> says:</label>
-        <p><%=post.idea%></p>
-    </div>
-
-    <div>
-        <a href="posts/edit/<%=post.id%>">Like</a>
-        <p><a href="/posts/<%=post.id%>"><%=post.users.length%></a> like this</p>
+    <div id='logout'>
+        <a href="/sessions/destroy" data-method='delete'>Logout</a>
     </div>
         
-    <% end %>
-<% end %>
+    <h1>Hi <%=@user.alias%></h1>
+    
+    
+    <form action = "/posts/create" method = "post">
+        <input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+        <input type = 'hidden' name='user_id' value='<%=session[:id]%>'>
+        <input type="text" name="idea" id = "comment" value="Post something witty here...">
+        <input type="submit" value="Idea!" id='button'>
+    </form>
+    
+    
+        <%  @allPosts.each do |post| %>
+        
+        <div id='post'>
+            <div class='row'>
+                <label> <a href="/users/<%=post.user.id%>"><%=post.user.alias%></a> says:</label>
+                <p id='user_comment'><%=post.idea%></p>
+            </div>
+        
+            <div class='row'>
+                <a href="posts/edit/<%=post.id%>">Like</a>
+                <p><a href="/posts/<%=post.id%>"><%=post.users.length%></a> like this</p>
+            </div>
+        </div>
+
+        <% end %>
+
+</div>

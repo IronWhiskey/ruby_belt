@@ -1,0 +1,43 @@
+/*CSS reset settings here*/
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#wrapper{
+    width: 900px;
+    margin: 20px auto;
+}
+
+#comment{
+    width: 500px;
+    padding: 3px;
+    border-radius: 2px;
+}
+
+#button{
+    padding: 3px;
+    border-radius: 5px;
+}
+
+#logout{
+    text-align: right;
+}
+
+.row{
+    margin: 10px auto;
+}
+
+.row *{
+    display: inline;
+}
+
+#post{
+    margin: 40px auto;
+}
+
+#user_comment{
+    border: solid black 2pt;
+    border-radius: 4px;
+    padding: 3px;
+}

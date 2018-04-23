@@ -11,8 +11,7 @@ class SessionsController < ApplicationController
         @user = User.find_by_email(params[:email]).try(:authenticate, params[:password]) 
         if @user != nil and @user != false
             session[:id] = @user.id 
-            p "inside if"
-            # flash[:notice] = ['Usuccessfully created']
+            # p "inside if"
             redirect_to "/bright_ideas"
         else
             # flash[:errors] = @user.errors.full_messages

@@ -1,67 +1,81 @@
-<h1>Welcome</h1>
+<%= stylesheet_link_tag "main.css" %>
 
-<% if flash[:errors] %>
-    <% flash[:errors].each do |error| %>
-        <p><%=error%></p>
+
+<div id='wrapper'>
+    
+    <h1>Welcome</h1>
+    
+    <% if flash[:errors] %>
+        <% flash[:errors].each do |error| %>
+            <p id='notice'><%=error%></p>
+        <% end %>
     <% end %>
-<% end %>
 
+    <% if flash[:notice] %>
+        <% flash[:notice].each do |notice| %>
+            <p id='notice'><%=notice%></p>
+        <% end %>
+    <% end %>
 
-<div>
-    <form action = "/users/create" method = "post">
-        <input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
-        <h3>Register</h3>
+    <div id='register'>
+        <form  action = "/users/create" method = "post">
+            <input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+            <h3>Register</h3>
+            
+            <table>
+                <tr>
+                    <td> <label>Name:</label> </td>
+                    <td><input type = "text" name="name" id = "name"></td>
+                </tr>
+                    
+                <tr>
+                    <td><label>Alias:</label></td>
+                    <td><input type = "text" name="alias" id = "alias"></td>
+                </tr>
+
+                <tr>
+                    <td><label>Email:</label></td>
+                    <td><input type="text" name="email" id = "email"></td>
+                </tr>
+
+                <tr>
+                    <td><label>Password:</label></td>
+                    <td><input type="password" name="password" id = "password"></td>
+                </tr>
+
+                <tr> 
+                    <td colspan="2"><p>Password should be at least 8 characters</p></td>
+                </tr>
+
+                <tr>    
+                    <td><label>Confirm Password:</label></td>
+                    <td><input type="password" name="password_confirmation" id = "password_confirmation"></td>
+                </tr>
+
+            </table>
+            <input type = "submit" value = "Register">
+        </form>
+    </div>
+
+    <div id='login'>
+        <form action = "sessions/create" method = "post">
+            <input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+            <h3>Login</h3>        
         
-        <table>
-            <tr>
-                <td> <label>Name:</label> </td>
-                <td><input type = "text" name="name" id = "name"></td>
-            </tr>
-                
-            <tr>
-                <td><label>Alias:</label></td>
-                <td><input type = "text" name="alias" id = "alias"></td>
-            </tr>
+            <table>
+                <tr>
+                    <td><label>Email:</label></td>
+                    <td><input type="text" name="email" id = "email"></td>
+                </tr>
 
-            <tr>
-                <td><label>Email:</label></td>
-                <td><input type="text" name="email" id = "email"></td>
-            </tr>
-
-            <tr>
-                <td><label>Password:</label></td>
-                <td><input type="password" name="password" id = "password"></td>
-            </tr>
-
-            <tr><p>Password should be at least 8 characters</p></tr>
-
-            <tr>    
-                <td><label>Confirm Password:</label></td>
-                <td><input type="password" name="password_confirmation" id = "password_confirmation"></td>
-            </tr>
-
-        </table>
-        <input type = "submit" value = "Register">
-    </form>
-
-
-    <form action = "sessions/create" method = "post">
-        <input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
-        <h3>Login</h3>        
-    
-        <table>
-            <tr>
-                <td><label>Email:</label></td>
-                <td><input type="text" name="email" id = "email"></td>
-            </tr>
-
-            <tr>
-                <td><label>Password:</label></td>
-                <td><input type="password" name="password" id = "password"></td>
-            </tr>
-        </table>
-    
-        <input type = "submit" value = "Log In">
-    </form>
+                <tr>
+                    <td><label>Password:</label></td>
+                    <td><input type="password" name="password" id = "password"></td>
+                </tr>
+            </table>
+        
+            <input type = "submit" value = "Log In">
+        </form>
+    </div>
 
 </div>

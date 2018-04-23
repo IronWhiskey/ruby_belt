@@ -1,31 +1,28 @@
 class PostsController < ApplicationController
 
 
-    def edit        # adds a new user to the UserPost join table when a post is liked
+    def edit    # adds a new user to the UserPost join table when a post is liked
         user = User.find( session[:id] )
         postsFromUser = UserPost.where(user_id: user.id)
-        found = false
-        postsFromUser.each  do |record|
-            if record.post_id == params[:post_id]
-                found = true
-                # redirect_to :back
+        # p "session id is #{session[:id]}"
+        # p "posts from  this user are #{postsFromUser}"
+
+        post = Post.find(params[:post_id])
+        unless post.users.include? user
+            if post.user != user
+                UserPost.create(user_id: user.id, post_id: params[:post_id])
             end
         end
-        if found
-            redirect_to :back
-        else
-            like = UserPost.create(user_id: user.id, post_id: params[:post_id])
-            redirect_to :back
-        end
+
+        redirect_to :back
     end
 
     def show
-        post = Post.find( params[:post_id] )
+        @post = Post.find( params[:id] )
         render "posts/show"
     end
 
     def create
-        # user = User.find( session[:id] )
         p = Post.create( params.permit(:idea, :user_id))
         redirect_to :back
     end

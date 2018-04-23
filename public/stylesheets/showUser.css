@@ -1,0 +1,18 @@
+/*CSS reset settings here*/
+*{
+    margin: 0px;
+    padding: 0px;
+}
+#logout{
+    text-align: right;
+}
+
+#wrapper{
+    width: 900px;
+    margin: 20px auto;
+}
+
+#email{
+    border-bottom: solid black 2pt;
+    margin-bottom: 30px;
+}
